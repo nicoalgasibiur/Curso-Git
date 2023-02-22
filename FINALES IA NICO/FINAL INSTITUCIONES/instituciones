@@ -1,0 +1,78 @@
+
+%institutoSalud(IDInstitucion,Nombre,Direccion,Telefono,Sector,[Obras Sociales]).
+%medico(Matricula, Nombre, Especialidad, [IDInstituciones]).
+
+
+%1. Dada una lista de códigos de institutos y una obra social, indicar el nombre de los institutos que atiendan por esa os.
+%2. Contar los médicos que atienden en institutos del sector publico. 
+
+% Variante: 
+%1. Devolver una lista [] con los c�digos de instituciones que coincidan con la obra social y con el sector,
+	%ambos ingresados como dato de entrada. 
+%2. Devolver una lista [] con los c�digos de instituciones en las que  atiende un m�dico y seg�n una obra social, 
+    %tambien estos dos datos se ingresaban como dato. 
+
+:-dynamic(institutoSalud/6).
+:-dynamic(medico/4).
+
+
+menu:- abrir_base,
+	  writeln('Opciones: '),
+	  writeln('1. Institutos que atienden con Obra Social y en instituciones a ingresar. '),
+	  writeln('2. Cantidad de medicos sector publico.'),
+	  writeln('0. Salir.'),
+	  read(Op), Op \= 0, opciones(Op),nl,menu.
+
+menu.
+
+
+abrir_base:- retractall(institutoSalud(_,_,_,_,_,_)),
+			 retractall(medico(_,_,_,_)),
+			 consult('C:/Users/Nico/Desktop/FINALES IA NICO/FINAL INSTITUCIONES/bd.txt').
+
+
+opciones(1):- writeln('Ingrese una obra social: '),
+			  read(OS),
+			  writeln('Ingrese instituciones: '),
+			  leer(ListaInstituciones),
+			  obtenerInsitutosCompatibles(ListaInstituciones,OS,ListaInstitucionesCompatibles),
+			  writeln('Instituciones compatibles: '),
+			  write(ListaInstitucionesCompatibles),nl.
+			  
+
+opciones(2):- writeln('Medicos que atienden en sector publico: '),
+			  obtenerCantidadMedicos(Cantidad),
+			  write(Cantidad),nl.
+
+obtenerInstitucionesCompatibles([H|T],OS,[H|T2]):- institutoSalud(H,_,_,_,_,ListaObrasSociales),
+												   pertence(OS,ListaObrasSociales),
+												   retract(institutoSalud(H,_,_,_,_,ListaObrasSociales))
+												   obtenerInstitucionesCompatibles(T,OS,T2).
+obtenerInstitucionesCompatibles([_|T],OS,ListaInstitucionesCompatibles):- obtenerInstitucionesCompatibles(T,OS,T2).
+obtenerInstitucionesCompatibles([],_,[]).												   
+
+
+
+
+obtenerCantidadMedicos(Cantidad):- medico(Matricula,_,_,ListaInstituciones),
+								   contarInstitucionesPublicas(ListaInstituciones,Cant),
+								   Cant >=1,
+								   obtenerCantidadMedicos(Cantidad).
+obtenerCantidadMedicos(0).								
+
+
+contarInstitucionesPublicas([H|T],Cant):- institutoSalud(H,_,_,_,sector,_),
+										  sector == 'publico',
+										  retract(institutoSalud(H,_,_,_,sector,_)),
+										  contarInstitucionesPublicas(T,CantA),
+										  Cant is CantA + 1.
+contarInstitucionesPublicas([],0).										  
+   
+
+
+
+leer([H|T]):- read(H),H\=[],leer(T).
+leer([]).			 
+
+pertenece(H,[H|_]).
+pertenece(X,[_|T]):- pertenece(X,T).		      

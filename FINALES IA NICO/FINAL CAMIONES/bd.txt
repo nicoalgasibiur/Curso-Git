@@ -1,0 +1,23 @@
+%camion(cod_camion, marca, modelo, tipo_mma, peso_vacio, tipo1, tipo2, tipo3).
+%viaje(cod_conductor, cod_camion, peso_carga_kg, ciudad_origen, fecha_partida,ciudad_destino, fecha_llegada).
+%conductor(cod_conductor, apellido_nombre, edad, ciudad_natal, [cod_camion]).
+
+:-dynamic camion/8.
+camion(1, scania, 2015, n1, 1000, 'Camión de lona', '2 ejes', 'Rígido').
+camion(2, ford, 2015, n1, 1000, 'Plataforma abierta', '3 ejes', 'Rígido').
+camion(3, chevrolet, 2015, n1, 1000, 'Plataforma abierta', '3 ejes', 'Articulado').
+camion(4, 'mercedes benz', 2015, n1, 1000, 'Camión de lona', '2 ejes', 'Trailer').
+
+:-dynamic viaje/7.
+viaje(1, 1, 1000, 'Rosario', '13/04/2020','Santa Fe','15/04/2020').
+viaje(1, 2, 2000, 'Rosario', '15/04/2020','Santa Fe','16/04/2020').
+viaje(2, 2, 2000, 'Rosario', '18/04/2020','Santa Fe','19/04/2020').
+viaje(2, 3, 3000, 'Rosario', '19/04/2020','Santa Fe','20/04/2020').
+viaje(3, 1, 4000, 'Rosario', '20/04/2020','Santa Fe','21/04/2020').
+
+
+:-dynamic conductor/5.
+conductor(1, 'Suárez Mario', 56, 'Rosario', [1,2,3]).
+conductor(2, 'Pepe Argento', 48, 'Villa Ramallo', [2,3]).
+conductor(3, 'Arturo Lopez', 29, 'Rosario', [1]).
+

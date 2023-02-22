@@ -1,0 +1,9 @@
+% sucursales(id, nombre)
+% producto(id, nombre, necesitaRefrigeracion, fechaVencimiento, idSucursal)
+% necesitaRefrigeracion: 'si'/'no'. 
+% fechaVencimiento: formato "DD/MM/YYYY"
+
+%1) Dada una lista de sucursales, listado de productos que requieran conservación con refrigeración
+%   y listado de los que NO requieran, definiendo y usando una función llamada dividir_por_conservacion/3
+%2) Listado de sucursales que tengan al menos 2 productos con fecha_vencimiento en 2024.
+

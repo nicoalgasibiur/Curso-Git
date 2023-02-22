@@ -1,0 +1,18 @@
+
+%jardin(CodigoJardin, nombre_jardin, [Tipos de Sala])
+%salas(CodigoJardin, nombre_sala, tipo_de_sala, [Dni Asistentes])
+
+:-dynamic jardin/3.
+
+jardin(j1, 'jardin 1', [t1,t2,t3]).
+jardin(j2, 'jardin 2', [t2,t4,t5]).
+jardin(j3, 'jardin 3', [t1,t2,t4]).
+
+:-dynamic salas/4.
+
+salas(j1, 'sala 1.1', t1, [u1,u2,u3,u4,u5]).
+salas(j1, 'sala 1.2', t2, [u3,u2,u6]).
+salas(j2, 'sala 2.4', t4, [u9,u11,u40]).
+salas(j2, 'sala 2.5', t5, [u7,u8,u9]).
+salas(j3, 'sala 3.1', t1, [u20,u27,u80]).
+salas(j3, 'sala 3.2', t2, [u45,u70,u22]).

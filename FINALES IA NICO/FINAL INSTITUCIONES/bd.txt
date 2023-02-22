@@ -1,0 +1,20 @@
+
+%institutoSalud(IDInstitucion,Nombre,Direccion,Telefono,Sector,[Obras Sociales]).
+%medico(Matricula, Nombre, Especialidad, [IDInstituciones]).
+
+
+:-dynamic institutoSalud/6.
+
+institutoSalud(1,'Gamma', 'Dorrego 851',332556556, 'privado',['Osde','Ioma','Swiss','Acindar Salud']).
+institutoSalud(2,'Flemini', 'Bs as 1956',1323569878,'privado',['Osde','Swiss']).
+institutoSalud(3,'Gomendio','Iribas 921',3265789652,'privado',['Acindar Salud','Osde']).
+institutoSalud(4,'Centenario','Santan Fe 989',1351355646,'publico',['Acindar Salud','Osde']).
+
+:-dynamic medico/4.
+
+medico(1,'Luis Algasibiur','Cardiologo',[1, 2,3]).
+medico(2,'Nico Basualdo','Neumonologo',[2,3]).
+medico(3,'Cristian Galloso','Traumatologo',[1,2]).
+medico(4, 'Juan Roman Riquelme','Otorrino',[1,3,4]).
+medico(5, 'Martin Algasibiur','Otorrino',[4]).
+

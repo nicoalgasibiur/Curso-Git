@@ -1,0 +1,35 @@
+%pañal(CodPañal, edadDesde, edadHasta) 
+%venta(CodVenta, dni_cliente, ListaCodPañales)
+%cliente(dni, nombre, edad)
+
+:-dynamic panal/3.
+
+panal(1,0,1).
+panal(2,2,3).
+panal(3,3,4).
+panal(4,4,5).
+panal(5,6,7).
+panal(6,7,8).
+panal(7,9,10).
+
+:-dynamic venta/3.
+
+venta(1,1,[1,2,3]).
+venta(2,1,[3,4]).
+venta(3,2,[1]).
+venta(4,2,[1,2]).
+venta(5,3,[1,6]).
+venta(6,3,[4]).
+venta(7,3,[3]).
+venta(8,4,[7]).
+
+:-dynamic cliente/3.
+
+cliente(1,juan,39).
+cliente(2,pedro,45).
+cliente(3,manuel,33).
+cliente(4,pepe,20).
+
+
+
+

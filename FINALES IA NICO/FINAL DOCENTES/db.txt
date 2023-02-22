@@ -1,0 +1,23 @@
+:-dynamic docente/6.
+:-dynamic colegio/3.
+:-dynamic colegio_docentes/3.
+
+%docente(dni,nombre,edad,telefono,direccion,ciudad).
+docente(32910834,manuel,33,156042078,'Pellegrini 1260 9c','Rosario').
+docente(33069079,alan,30,155850173,'San Victor 310','Carcaraña').
+docente(31069077,andres,36,15850173,'Buenos aires 1500','Rosario').
+
+%colegio(nombreColegio,direccion,ciudad).
+colegio(utn,'Zeballo 1323','San jeronimo').
+colegio(unr,'Pellegrini 1323','Rosario').
+colegio(uai,'Pellegrini 2323','Rosario').
+
+%colegio_docentes(nombreColegio,dni,[listaMaterias]).
+colegio_docentes(utn,32910834,['Simulacion', 'Int Artificial', 'Gerencial', 'Sintaxis']).
+colegio_docentes(unr,32910834,['Simulacion', 'Gerencial']).
+colegio_docentes(uai,32910834,['Redes', 'Teoria de Control', 'Arquitectura de Ordenadores']).
+colegio_docentes(utn,33069079,['Simulacion', 'Int Artificial', 'Gerencial', 'Sintaxis']).
+colegio_docentes(unr,33069079,['Simulacion', 'Gerencial']).
+colegio_docentes(uai,31069077,['Redes', 'Teoria de Control', 'Arquitectura de Ordenadores']).
+colegio_docentes(utn,31069077,['Simulacion', 'Int Artificial', 'Gerencial', 'Sintaxis']).
+colegio_docentes(unr,31069077,['Simulacion', 'Gerencial']).

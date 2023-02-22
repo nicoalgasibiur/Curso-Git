@@ -1,0 +1,67 @@
+%persona(Nombre,[ListaPeliculasVieron])
+%peliculas(IDPelicula,Nombre,Duracion)
+
+% Una persona tenia diferente membresia segun la cantida de minutos visto en una pelicula.
+% Membresia Gold: +100 Minutos vistos de peliculas.
+
+%1. Listar todas las personas con memebresia GOLD.
+%2. Listar todas las peliculas que fueron vistas al menos una vez.
+
+
+:-dynamic(persona/2).
+:-dynamic(pelicula/3).
+
+menu:- abrir_base,
+	   writeln('Menu:'),
+	   writeln('1. Listar personas que son membresia GOLD'),
+	   writeln('2. Listar peliculas vistas al menos una vez'),
+	   writeln('0. Salir'),
+	   read(Op),Op\=0,opciones(Op),nl,nl,menu.
+
+menu:- writeln('Fin del programa.').
+
+abrir_base:- retractall(persona(_,_)),
+			 retractall(pelicula(_,_,_)),
+			 consult().
+
+
+opciones(1):- abrir_base,
+			  obtenerPersonasGold(ListadoPersonas),
+			  writeln(ListadoPersonas),nl,nl.
+
+opciones(2):- abrir_base,
+			  obtenerPeliculasVistas(ListaPeliculas),
+			  writeln(ListaPeliculas),nl,nl.
+			  
+
+obtenerPersonasGold([H|T]):- persona(H,Listapeliculas),
+							 contarMinutos(ListaPeliculas,Suma),
+							 Suma > 100,
+							 retract(persona(H,ListaPeliculas),
+							 obtenerPersonasGold(T).
+obtenerPersonasGold([]).
+
+
+contarMinutos([H|T],Suma):-pelicula(H,_,Duracion),
+						   retract(pelicula(H,_,Duracion)),
+						   contarMinutos(T,SumaT),
+						   Suma is SumaT + Duracion.
+contarMinutos([],0).
+
+
+obtenerPeliculasVistas([H|T]):- pelicula(H,_,_),
+								contarVecesVista(H,Cantidad),
+								Cantidad >=1,
+								retract(pelicula(H,_,_)),
+								obtenerPeliculasVistas(T).
+obtenerPeliculasVistas([]).
+
+contarVecesVista(H,Cantidad):- persona(P,ListaPeliculas),
+							   pertenece(H,ListaPeliculas),
+							   retract(P,ListaPeliculas),
+							   contarVecesVista(H,CantidadA),
+							   Cantidad is CantidadA + 1.
+contarVecesVista(_,0).
+
+pertenece(H,[H|_]).
+pertenece(X,[_|T]):-pertenece(X,T).

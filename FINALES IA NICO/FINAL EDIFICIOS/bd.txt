@@ -1,0 +1,21 @@
+%edificio(nombre,direccion,localidad).
+:-dynamic edificio/3.
+edificio('Edificio Kent', 'Ipolito Irigoyen 1011', 'Rosario').
+edificio('Edificio Basko', 'Zaballos 1789', 'Rosario').
+edificio('Edificio Monte Grande', 'Paraguay 1111', 'Galvez').
+
+%departamento(nombreEdificio,piso,nro,cantidadHabitaciones,%precio,estado,[listaCodigoCaracteriscas]).
+:-dynamic departamento/7.
+departamento('Edificio Kent', 1, a, 3, 50, 'disp', [1, 3,4]).
+departamento('Edificio Kent', 1, b, 1, 18, 'disp', [2, 4]).
+departamento('Edificio Basko', 5, e, 5, 70, 'vend', [2]).
+departamento('Edificio Basko', 5, f, 5, 70, 'vend', [2,4]).
+departamento('Edificio Kent', 1, d, 1, 18, 'disp', [2, 3]).
+departamento('Edificio Monte Grande', 2, a, 2, 25, 'disp', [1]).
+gar
+%caracteristica(codigo,descripcion)
+:-dynamic caracteristica/2.
+caracteristica(1,'nuevo').
+caracteristica(2,'usado').
+caracteristica(3,'amueblado').
+caracteristica(4,'garage').

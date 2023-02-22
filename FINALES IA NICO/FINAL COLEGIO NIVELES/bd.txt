@@ -1,0 +1,19 @@
+%colegio(Cod_colegio,Direccion,Telefono,Ciudad,1[nivel]n).
+%niveles(Cod_colegio,Nivel,Curso,Turno,1[DniAlumnos]n).
+
+:-dynamic colegio/5.
+
+colegio(c1,'mendoza 2000',455555,'Rosario',[n1,n2]).
+colegio(c2,'cordoba 2000',466666,'Rosario',[n1,n2,n5]).
+colegio(c3,'urquiza 2000',477777,'Rosario',[n1,n2,n3,n4]).
+colegio(c4,'san lorenzo 2000',999999,'Funes',[n2,n3]).
+colegio(c5,'Algoritmo 1000',222222,'Funes',[n1]).
+
+:-dynamic niveles/5.
+
+niveles(c1,n1,'matematicas 1','tarde',[a11,a22,a33,a44,a55,a66]).
+niveles(c1,n2,'matematicas 2','tarde',[a44,a55,a66]).
+niveles(c2,n1,'matematicas 1','tarde',[a21]).
+niveles(c2,n1,'cs naturales 1','noche',[a32,a42,a52]).
+niveles(c2,n2,'cs naturales 2','noche',[a33,a43,a53,a63]).
+niveles(c3,n1,'tercero','noche',[a41,a43,a45]).

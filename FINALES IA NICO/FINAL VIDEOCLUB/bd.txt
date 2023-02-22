@@ -1,0 +1,21 @@
+%persona(Nombre,[ListaPeliculasVieron])
+%peliculas(IDPelicula,Nombre,Duracion)
+
+
+:-dynamic persona/2.
+
+persona('juan',[1,2,3,4]).
+persona('pedro',[2,3]).
+persona('ema',[4]).
+persona('nico',[1,2]).
+persona('bruno',[3]).
+persona('mati',[2,3]).
+
+
+:-dynamic pelicula/3.
+
+pelicula(1,'pelicula1',40).
+pelicula(2,'pelicula2',60).
+pelicula(3,'pelicula3',45).
+pelicula(4,'pelicula4',60).
+pelicula(5,'pelicula5',30).

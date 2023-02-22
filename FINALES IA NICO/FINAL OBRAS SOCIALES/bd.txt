@@ -1,0 +1,22 @@
+:-dynamic persona/5.
+:-dynamic obraSocial/4.
+
+persona(p1,manu,70,osde,gold).
+persona(p1,manu,70,swiss,pro).
+persona(p2,pota,34,osde,gold).
+persona(p3,seba,76,swiss,pro).
+persona(p4,woody,77,osde,binario).
+persona(p4,woody,77,osde,gold).
+persona(p5,federico,34,swiss,pro).
+
+
+obraSocial(osde,gold,ibupirac,100).
+obraSocial(osde,gold,loratadina,100).
+obraSocial(osde,gold,keterolac,60).
+obraSocial(swiss,pro,ibupirac,100).
+obraSocial(osde,binario,viagra,100).
+obraSocial(osde,gold,paracetamol,100).
+obraSocial(swiss,pro,keterolac,50).
+obraSocial(osde,binario,clonagin,100).
+obraSocial(swiss,pro,paracetamol,49).
+obraSocial(osde,binario,paracetamol,100).

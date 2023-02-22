@@ -1,0 +1,12 @@
+:-dynamic invitados/2.
+
+invitados('Phil', [1,2,3,4,5]).
+invitados('Jerry', [1,2,3,8]).
+invitados('William', [1,2,3,7]).
+invitados('Pota', [1,2,3]).
+invitados('Seba', [1,2,3,7]).
+invitados('Alan', [1,2,3,5]).
+invitados('Fito', [1,2,3,5]).
+invitados('Manu', [1,2,3,6]).
+invitados('Royce', [1,2,4]).
+invitados('Woody', [8]).

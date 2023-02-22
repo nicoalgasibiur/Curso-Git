@@ -1,0 +1,20 @@
+%escuela(Escuela, Descripcion).
+%alumno(Legajo,Nombre,Direccion,Escuela,Estatura).
+:-dynamic escuela/2.
+
+escuela(1,escuela1).
+escuela(2,escuela2).
+escuela(3,escuela3).
+escuela(4,escuela4).
+
+:-dynamic alumno/5.
+alumno(1,alumno1,chechu,1,170).
+alumno(2,alumno2,marche,1,200).
+alumno(3,alumno3,nico,1,160).
+alumno(4,alumno4,juan,2,180).
+alumno(5,alumno5,pedro,2,150).
+alumno(6,alumno6,pepe,2,175).
+alumno(7,alumno7,tomas,1,190).
+alumno(8,alumno8,fulano,2,155).
+alumno(9,alumno9,pajin,3,200).
+alumno(10,alumno10,wanchope,3,190).

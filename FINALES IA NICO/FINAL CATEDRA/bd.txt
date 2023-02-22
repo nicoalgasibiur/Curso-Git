@@ -1,0 +1,30 @@
+
+% catedra(catedra, nombre_catedra).
+% comision(catedra,comision,ciclo,[legajos de inscriptos]).
+% alumno(legajo,nombre).
+
+
+:-dynamic catedra/2.
+
+catedra(fi,fisica).
+catedra(mat,matematica).
+
+:-dynamic comision/4.
+comision(mat,1,2017,[1,2,3,4,8,9,10]).
+comision(mat,2,2017,[5,6]).
+comision(mat,4,2017,[5,6,7]).
+comision(mat,3,2018,[]).
+comision(mat,4,2018,[1]).
+comision(fi,1,2017,[2,3,4,7]).
+comision(fi,2,2017,[1,5,6]).
+comision(fi,3,2018,[2]).
+
+
+:-dynamic alumno/2.
+alumno(1,chechu).
+alumno(2,marche).
+alumno(3,clari).
+alumno(4,isa).
+alumno(5,nico).
+alumno(6,agus).
+alumno(7,rodolfo).

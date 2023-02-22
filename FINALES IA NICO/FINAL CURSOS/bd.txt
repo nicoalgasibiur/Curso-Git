@@ -1,0 +1,28 @@
+%personas(Nombre, Edad, [Profesiones],Ciudad).
+%cursos(Profesion, [Cursos]).
+%personas_cursos(Nombre,Profesion,[CursosRealizados]).
+
+:-dynamic personas/3.
+personas('Juan',29,['Maestro','Licenciado','Doctorado'],'Rosario').
+personas('Pedro',45,['Maestro'],'Rosario').
+personas('Rodri',35,['Licenciado'],'Galvez').
+personas('Mati',50,['Doctorado'],'Rosario').
+
+:-dynamic cursos/2.
+cursos('Maestro',[1]).
+cursos('Doctorado 3',[1,2,3,5,6,7]).
+cursos('Doctorado 2',[1,5,6,7]).
+cursos('Licenciado',[1,2]).
+cursos('Ciencia de datos',[6,7,8,9,4,66,145,198]).
+cursos('Doctorado',[1,2,3]).
+
+
+
+
+:-dynamic personas_cursos/3.
+personas_cursos('Juan','Maestro', [1]).
+personas_cursos('Juan','Licenciado', [1]).
+personas_cursos('Mati', 'Doctorado', [1,2]).
+
+
+

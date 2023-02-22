@@ -1,0 +1,11 @@
+
+%institutoSalud(IDInstitucion,Nombre,Direccion,Telefono,Sector,[Obras Sociales]).
+
+
+:-dynamic institutoSalud/6.
+
+institutoSalud(1,'Gamma', 'Dorrego 851',332556556, 'privado',['Osde','Ioma','Swiss','Acindar Salud']).
+institutoSalud(2,'Flemini', 'Bs as 1956',1323569878,'privado',['Osde','Swiss']).
+institutoSalud(3,'Gomendio','Iribas 921',3265789652,'privado',['Acindar Salud','Osde']).
+institutoSalud(4,'Centenario','Santan Fe 989',1351355646,'publico',['Acindar Salud','Osde']).
+

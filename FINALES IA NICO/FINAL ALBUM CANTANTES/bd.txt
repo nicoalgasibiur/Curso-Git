@@ -1,0 +1,26 @@
+:- dynamic album/5.
+
+
+album('amordspamor','fito',['tema1','tema2','tema3','tema4'],'12/02/2004',14000).
+album('euforia','fito',['euf1','euf2','tema3','tema4'],'12/02/2004',14000).
+album('euforias','spinetta',['seuf1','seuf2','stema3','stema4'],'12/02/2004',1200000).
+album('barro','spinetta',['seuf1','seuf2','stema3','stema4'],'12/02/2004',14000).
+album('hojas','spinetta',['seuf1','seuf2','stema3','stema4'],'12/02/2004',1400000).
+album('sol','spinetta',['seuf1','seuf2','stema3','stema4'],'12/02/2004',1500000).
+album('adws','spinetta',['seuf1','seuf2','stema3','stema4'],'12/02/2004',14000).
+album('sabinaypaez','sabinas',['speuf1','speuf2','sptema3','sptema4'],'12/02/2004',14000).
+album('albumsueco1','Dwre',['s1','s2','s3','s4'],'12/02/2006',14000).
+album('albumsueco2','Dwre',['sss1','sss2','sss3','sss4'],'12/02/2006',14000).
+album('albumsueco3','Dwre',['ss1','ss2','ss3','ss4'],'12/02/2008',14000).
+album('albumsueco5','Dwre',['sas1','sas2','sas3','sas4'],'12/02/2006',14000).
+album('albumsueco6','Trwos',['sa1','sa2','sa3','sa4'],'12/02/2006',14000).
+
+:- dynamic cantante/5.
+
+cantante('pepe','argentina').
+cantante('fito','argentina').
+cantante('spinetta','argentina').
+cantante('sabinas','argentina').
+cantante('Dwre','suecia').
+cantante('sabinas','argentina').
+cantante('Trwos','suecia').

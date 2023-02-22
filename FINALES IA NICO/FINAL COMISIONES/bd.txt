@@ -1,0 +1,35 @@
+% catedra(nombre_catedra,descripcion).
+% comision(nombre_catedra,comision,ciclo,[legajo de inscriptos]).
+% alumno(legajo,nombre,apellido,edad).
+
+:- dynamic catedra/2.
+
+
+catedra(ia,'Inteligencia Artificial').
+catedra(pf,'Proyecto Final').
+catedra(sdg,'Sistemas de Gestion').
+catedra(ag,'Administracion Gerencial').
+catedra(it,'Infraestructura Tecnologica').
+
+:- dynamic comision/4.
+
+comision(ia,501,2022,[41963,41964,41965,50000]).
+comision(pf,501,2022,[41963,41964,41965,50000]).
+comision(sdg,501,2022,[41963,41964,41965,50000]).
+comision(ag,501,2022,[41963,41964,41965,50000]).
+comision(ia,501,2021,[40500,40856,39826]).
+comision(ia,502,2022,[41966,41967,41968,41969,41970]).
+comision(it,501,2022,[41963,41964,41965,50000,50001,50002]).
+
+:- dynamic alumno/4.
+
+alumno(41963,'Nicolas','Algasibiur',22).
+alumno(41964,'Juan','Perez',22).
+alumno(41965,'Marcos','Carlomagno',22).
+alumno(41966,'Lucio','Bevilacqua',22).
+alumno(41967,'Gabriel','Villar',22).
+alumno(41968,'Alexis','Rossi',22).
+alumno(41969,'Matias','Zapillon',22).
+alumno(41970,'Franco','Ferrero',22).
+alumno(50000,'Lautaro','Marchetti',22).
+

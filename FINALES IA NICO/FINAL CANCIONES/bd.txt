@@ -1,0 +1,27 @@
+%cancion(IdCancion,Nombre,Artista,Duración,Genero)
+%invitados(Nombre, [IdCanciones que gusta]) 
+
+:-dynamic cancion/5.
+
+
+cancion(1,'Moonlight Serenade','Glenn Miller',4,jazz).
+cancion(2,'The Very Thought Of You','Al Bowlly',5,jazz).
+cancion(3,'Perfect Day','Lou reed',3,rock).
+cancion(4,'L-o-v-e','Nat King Cole',6,jazz).
+cancion(5,'Heartaches','Al Bowlly',5,jazz).
+cancion(6,'Where are we now','David Bowie',7,rock).
+cancion(7,'La chanson','Fisgon Morboson',1,jazz).
+cancion(8,'Pijon','Fisgon Morboson',60,jazz).
+
+:-dynamic invitados/2.
+
+invitados('Phil', [1,2,3,4,5]).
+invitados('Jerry', [1,2,3,8]).
+invitados('William', [1,2,3,7]).
+invitados('Pota', [1,2,3]).
+invitados('Seba', [1,2,3,7]).
+invitados('Alan', [1,2,3,5]).
+invitados('Fito', [1,2,3,5]).
+invitados('Manu', [1,2,3,6]).
+invitados('Royce', [1,2,4]).
+invitados('Woody', [8]).

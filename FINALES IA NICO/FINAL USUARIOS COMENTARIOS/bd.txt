@@ -1,0 +1,29 @@
+
+%usuario(id, edad, estado, ciudad, [idAmigos]).
+%comentario(idcomentario,idusuario, comentario).
+%provincia(idprovincia, [ciudades])
+
+
+:-dynamic usuario/5.
+usuario(u1, 18, activo, rosario, [u2,u4,u3]).
+usuario(u2, 18, inactivo, rosario, [u1]).
+usuario(u3, 18, activo, rosario, [u6,u1]).
+usuario(u4, 18, activo, sargento , [u1]).
+usuario(u5, 18, activo, roldan, [u7, u8]).
+usuario(u6, 18, activo, roldan, [u3]).
+usuario(u7, 18, activo, rosario, [u5]).
+usuario(u8, 18, activo, rosario, [u5]).
+
+:-dynamic comentarios/3.
+comentarios(c1, u1, 'Comment1').
+comentarios(c2, u1, 'Comment2').
+comentarios(c3, u1, 'Comment3').
+comentarios(c4, u2, 'Comment4').
+comentarios(c5, u2, 'Comment5').
+comentarios(c6, u3, 'Comment6').
+comentarios(c7, u3, 'Comment7').
+
+
+:-dynamic provincia/2.
+provincia(p1,[rosario, sargento,roldan]).
+provincia(p2,['san nicolas','capital federal',baraderos]).

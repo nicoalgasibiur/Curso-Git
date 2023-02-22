@@ -1,0 +1,29 @@
+%vacuna(ID, Nombre, Cadena de frio)
+%vacunas_segun_edad(Vacuna, Edad a la que se recomienda tener aplicada) 
+%persona(nombre, edad, [ListaVacunasAplicadas])
+
+
+:-dynamic vacuna/3.
+
+vacuna(1, vacuna1, si).
+vacuna(2, vacuna2, si).
+vacuna(3, vacuna3, no).
+vacuna(4, vacuna4, si).
+vacuna(5, vacuna5, no).
+
+:-dynamic vacunas_segun_edad/2.
+
+vacuna_segun_edad(1,6).
+vacuna_segun_edad(2,6).
+vacuna_segun_edad(3,6).
+vacuna_segun_edad(4,10).
+vacuna_segun_edad(5,10).
+
+
+:-dynamic persona/3.
+
+persona('Nico',5,[1,2,3]).
+persona('Nacho',5,[1,2,3]).
+persona('Gabi',8,[1,2,3]).
+persona('Ema',9,[1,2]).
+persona('Pablo',10,[1,2,3,4,5]).

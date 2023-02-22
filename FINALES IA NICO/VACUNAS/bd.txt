@@ -1,0 +1,19 @@
+
+%niño(nombre, edad, [vacunas_aplicadas]).
+%vacunas_edad(edad_desde, edad_hasta, vacunas_a_aplicarse).
+%vacuna(vacuna, [enfermedades_que_cura]).
+
+:-dynamic nino/3.
+nino('catriel',10,['hepatitis b','triple viral','gripe', 'vph']).
+nino('santiago',10,['bcg','hepatitis b','polio ipv']).
+nino('damian',10,['ratavirus']).
+
+:-dynamic vacuna_edad/3.
+vacuna_edad(1,6,['bcg','hepatitis b','polio ipv','ratavirus','neumococo conjugada','gripe','hepatitis a','triple viral','fiebre amarilla','quintuple pentavalente celular']).
+vacuna_edad(7,11,['triple bacteriana','vph']).
+vacuna_edad(8,15,['doble viral sr','fiebre hemorragica argentina']).
+
+:-dynamic vacuna/2.
+vacuna('quintuple pentavalente celular',['hepatitis b','tetano']).
+vacuna('hepatitis b',['hepatitis b']).
+vacuna('triple bacteriana',['tetano','difteria']).

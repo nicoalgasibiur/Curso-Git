@@ -1,0 +1,23 @@
+% sucursales(id, nombre)
+
+:-dynamic sucursales/2.
+
+sucursales(1,sucursal1).
+sucursales(2,sucursal2).
+sucursales(3,sucursal3).
+
+% producto(id, nombre, necesitaRefrigeracion, fechaVencimiento, idSucursal)
+:-dynamic productos/5.
+
+producto(1,producto1,'si','11/04/2024', 1).
+producto(2,producto2,'no','11/04/2024', 3).
+producto(3,producto3,'si','11/04/2023', 2).
+
+producto(1,producto1,'si','11/04/2024', 3).
+producto(2,producto2,'no','11/04/2024', 1).
+producto(3,producto3,'si','11/04/2022', 1).
+
+producto(4,producto4,'si','11/04/2024', 1).
+producto(4,producto4,'si','11/04/2022', 2).
+producto(5,producto5,'si','11/04/2022', 1).
+

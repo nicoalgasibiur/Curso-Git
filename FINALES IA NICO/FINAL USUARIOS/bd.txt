@@ -1,0 +1,24 @@
+:- dynamic usuario/5.
+
+usuario(1, activo, 21, 1, [2, 3, 4]).
+usuario(2, inactivo, 21, 10, [1]).
+usuario(3, activo, 25, 11, [1, 2, 4]).
+usuario(4, activo, 21, 1, [2, 3, 4]).
+usuario(5, activo, 28, 1, [2]).
+usuario(6, activo, 19, 2, [1, 2]).
+
+:- dynamic provincia/3.
+
+provincia(1, 'Catamarca', [1, 2, 3, 4]).
+provincia(2, 'Santa Fe', [5]).
+provincia(3, 'Jujuy', [6]).
+provincia(4, 'Cordoba', [7, 8, 9]).
+provincia(5, 'Santa Catalina', [10]).
+provincia(6, 'Rocha', [11]).
+
+:- dynamic pais/3.
+
+pais(1, 'Argentina', [1, 2, 3, 4]).
+pais(2, 'Brasil', [5]).
+pais(3, 'Uruguay', [6]).
+

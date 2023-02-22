@@ -1,0 +1,21 @@
+
+%habitacion(Numero,descripcion,[ListaCaracteristicas],PrecioPorDia, Estado).
+
+:-dynamic habitacion/5.
+
+habitacion(1, uno, [1,2,3,4], 32, 'disponible').
+habitacion(2, dos, [1, 3], 4, 'disponible').
+habitacion(3, tres, [3], 213, 'ocupada').
+habitacion(4, cuatro, [1,2], 9, 'ocupada').
+
+:-dynamic caracteristicas/2.
+
+%caracteristicas(Codigo,Descripcion).
+caracteristica(1, wifi).
+caracteristica(2, tele).
+caracteristica(3, alfombra).
+caracteristica(4, inodoro).
+
+
+
+

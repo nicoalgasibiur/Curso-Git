@@ -1,0 +1,81 @@
+
+%usuario(id, edad, estado, ciudad, [idAmigos]).
+%comentario(idcomentario,idusuario, comentario).
+%provincia(idprovincia, [ciudades])
+
+%estado: Activo o Inactivo.
+%1- Mostrar la cantidad (numero) de usuarios que estan activos que hayan hecho al menos 2 comentarios.
+%2- Para un usuario ingresado, mostrar una lista de usuarios que podrian ser sus amigos.
+%- NO tienen que estar en su lista de amigos actualmente.
+%- No tienen que haber realizado ningun comentario
+%- Tienen que ser de la misma ciudad que el usuario ingresado*/
+
+
+:-dynamic(usuario/5).
+:-dynamic(comentario/3).
+:-dynamic(provincia/2).
+
+
+menu:- abrir_base,
+	  writeln('Menu principal: '),
+	  writeln('1. Mostrar cantidad de usuarios "Activos" que hayan hecho 2 o mas comentarios.'),
+	  writeln('2. Mostrar una lista de usuarios que podrian ser sus amigos. Dato Entrada: Usuario.'),
+	  writeln('0. Salir.'),
+	  read(Op),Op\=0,opciones(Op),nl,nl,menu.
+
+menu:- writeln('Fin del programa.').
+
+
+abrir_base:-retractall(usuario(_,_,_,_,_)),
+	    retractall(comentario(_,_,_)),
+	    retractall(pronvincia(_,_)),
+	    consult('C:/Users/Nico/Desktop/FINALES IA NICO/FINAL USUARIOS COMENTARIOS/bd.txt').
+
+
+opciones(1):-abrir_base,
+             obtenerCantidadUsuarios(Cantidad),
+	     write('Cantidad de usuarios con 2 o mas comentarios: '),write(Cantidad),nl,nl.
+
+
+opciones(2):-abrir_base,
+             writeln('Ingresar usuario: '),
+             read(Usuario),
+             obtenerListaUsuariosAmigos(Usuario, ListaUsuariosAmigos),
+             write(ListaUsuariosAmigos),nl,nl.
+
+
+obtenerCantidadUsuarios(Cantidad):-usuario(ID,_,activo,_,_),
+                                   contarComentarios(ID,Cant),
+				   Cant>=2,
+				   retract(usuario(ID,_,activo,_,_)),
+				   obtenerCantidadUsuarios(CantidadA),
+				   Cantidad is CantidadA + 1.
+obtenerCantidadUsuarios(0).
+
+
+contarComentarios(ID,Cantidad):- comentarios(IDComentario,ID,_),
+				 retract(comentarios(IDComentario,ID,_)),
+				 contarComentarios(ID,CantidadA),
+				 Cantidad is CantidadA + 1.
+
+contarComentarios(_,0).
+
+
+
+obtenerListaUsuariosAmigos(Usuario,ListaUsuariosAmigos):- retract(usuario(Usuario,_,_,Ciudad,ListaAmigos)),
+                                                          validarCondiciones(Ciudad,ListaAmigos,ListaUsuariosAmigos).
+
+pertenece(H,[H|_]).
+pertenece(X,[_|T]):-pertenece(X,T).
+
+
+validarCondiciones(Ciudad,ListaAmigos,[H|T]):- usuario(H,_,_,C,_),
+                                               C == Ciudad,
+                                               not(pertenece(H,ListaAmigos)),
+                                               contarComentarios(H,Cant),
+                                               Cant == 0,
+                                               retract(usuario(H,_,_,C,_)),
+                                               validarCondiciones(Ciudad,ListaAmigos,T).
+validarCondiciones(_,_,[]).
+
+
