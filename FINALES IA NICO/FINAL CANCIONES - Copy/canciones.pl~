@@ -1,0 +1,120 @@
+%cancion(IdCancion,Nombre,Artista,Duración,Genero)
+%invitados(Nombre, [IdCanciones que gusta]) Tenía un atributo mas que no me acuerdo pero no se usaba
+%1- Listar las canciones que le gusta a mas del 80% de los invitados.
+%2- Listar las canciones de género "vals" que duren mas de 15 minutos.
+
+
+:-dynamic(cancion/4).
+:-dynamic(invitados/2).
+
+menu:-    abrir_base_general,
+	  writeln('Menu de opciones: '),
+	  writeln('1. Listar canciones que le gustan a mas del 80% de los invitados.'),
+	  writeln('2. Listar canciones de genero X que duren mas de Y minutos.'),
+	  writeln('0. Salis.'),
+	  read(Op),Op\=0,opciones(Op),nl,nl,menu.
+
+menu:-writeln('Fin del programa.').
+
+abrir_base_general:-retractall(cancion(_,_,_,_)),
+		    retractall(invitados(_,_)),
+		    consult('C:/Users/Nico/Desktop/FINALES IA NICO/FINAL CANCIONES/bd_canciones.txt'),
+		    consult('C:/Users/Nico/Desktop/FINALES IA NICO/FINAL CANCIONES/bd_invitados.txt').
+
+abrir_base_invitados:-retractall(invitados(_,_)),
+		      consult('C:/Users/Nico/Desktop/FINALES IA NICO/FINAL CANCIONES/bd_invitados.txt').
+
+
+
+opciones(1):-abrir_base_general,
+	     contarTotalInvitados(Cantidad),
+             abrir_base_invitados,
+             obtenerCanciones80(Cantidad, ListaCanciones),
+             write('Listado de canciones: '),writeln(ListaCanciones),nl,nl.
+
+opciones(3):-abrir_base_general,
+             obtenerInvitadosLista(ListaInvitados),
+             abrir_base_invitados,
+             contarInvitados(ListaInvitados,Total),
+             obtenerCanciones(Total,ListaInvitados,ListaCanciones),
+             write(ListaCanciones).
+
+opciones(2):-writeln('Ingrese genero: '),
+			read(Genero),
+			obtenerCancionesGenero(Genero,ListaCanciones),
+			writeln(ListaCanciones).
+
+
+
+
+obtenerCanciones80(Cantidad, [H|T]):- cancion(H,_,_,_,_),
+			              contarVecesQueGustaCancion(H,Cant),
+				      abrir_base_invitados,
+                                      Prom is Cant/Cantidad,
+                                      Prom >= 0.80,
+                                      retract(cancion(H,_,_,_,_)),
+                                      obtenerCanciones80(Cantidad,T).
+obtenerCanciones80(_,[]).
+
+
+contarTotalInvitados(Cantidad):- invitados(Nombre,_),
+				 retract(invitados(Nombre,_)),
+                                 contarTotalInvitados(CantA),
+				 Cantidad is CantA + 1.
+contarTotalInvitados(0).
+
+contarVecesQueGustaCancion(Cancion,Cantidad):-invitados(Nombre,ListaCancionesQueLeGustan),
+					      pertenece(Cancion,ListaCancionesQueLeGustan),
+					      retract(invitados(Nombre,ListaCancionesQueLeGustan)),
+					      contarVecesQueGustaCancion(Cancion,CantidadA),
+                                              Cantidad is CantidadA + 1.
+contarVecesQueGustaCancion(_,0).
+
+
+
+obtenerCancionesGenero(Genero,[H|T]):-cancion(H,_,_,Duracion,Genero),
+                                      Duracion >4,
+				      retract(cancion(H,_,_,Duracion,Genero)),
+				      obtenerCancionesGenero(Genero,T).
+obtenerCancionesGenero(_,[]).
+
+
+pertenece(H,[H|_]).
+pertenece(X,[_|T]):-pertenece(X,T).
+
+
+
+
+
+
+
+%Alternativa
+
+
+obtenerCanciones(Total,ListaInvitados,[H|T]):- cancion(H,_,_,_,_),
+                                               contarVecesQueGusta(H,ListaInvitados,Cantidad),
+                                               Prom is Cantidad/Total,
+                                               Prom >= 0.8,
+                                               retract(cancion(H,_,_,_,_)),
+                                               obtenerCanciones(Total,ListaInvitados,T).
+obtenerCanciones(_,_,[]).
+
+obtenerInvitadosLista([H|T]):-invitados(H,_),
+                              retract(invitados(H,_)),
+                              obtenerInvitadosLista(T).
+obtenerInvitadosLista([]).
+
+
+
+contarInvitados([_|T],Cantidad):-contarInvitados(T,CantidadT),
+                                 Cantidad is CantidadT + 1.
+contarInvitados([],0).
+
+
+
+contarVecesQueGusta(ID,[H|T],Cantidad):- invitados(H,ListaCanciones),
+                                         pertenece(ID,ListaCanciones),
+                                         contarVecesQueGusta(ID,T,CantidadA),
+                                         Cantidad is CantidadA +1.
+contarVecesQueGusta(ID,[_|T],Cantidad):-contarVecesQueGusta(ID,T,Cantidad).
+contarVecesQueGusta(_,[],0).
